@@ -1,0 +1,240 @@
+[
+    {
+        "id": 102,
+        "pokedex_number": 4,
+        "name": "Charmander",
+        "lat": 41.64889536298135,
+        "lng": -81.24356126007201
+    },
+    {
+        "id": 104,
+        "pokedex_number": 25,
+        "name": "Pikachu",
+        "lat": 41.64894768192277,
+        "lng": -81.24357204870485
+    },
+    {
+        "id": 105,
+        "pokedex_number": 133,
+        "name": "Eevee",
+        "lat": 41.64820410437586,
+        "lng": -81.24417809980628
+    },
+    {
+        "id": 106,
+        "pokedex_number": 16,
+        "name": "Pidgey",
+        "lat": 41.64923744864372,
+        "lng": -81.24365520174027
+    },
+    {
+        "id": 109,
+        "pokedex_number": 74,
+        "name": "Geodude",
+        "lat": 41.6475,
+        "lng": -81.24339
+    },
+    {
+        "id": 110,
+        "pokedex_number": 63,
+        "name": "Abra",
+        "lat": 41.64840655989216,
+        "lng": -81.24362019121929
+    },
+    {
+        "id": 111,
+        "pokedex_number": 92,
+        "name": "Gastly",
+        "lat": 41.649173210194654,
+        "lng": -81.24448123099795
+    },
+    {
+        "id": 113,
+        "pokedex_number": 39,
+        "name": "Jigglypuff",
+        "lat": 41.64894165823774,
+        "lng": -81.24388035524287
+    },
+    {
+        "id": 114,
+        "pokedex_number": 143,
+        "name": "Snorlax",
+        "lat": 41.64838647453854,
+        "lng": -81.24425056899558
+    },
+    {
+        "id": 116,
+        "pokedex_number": 2,
+        "name": "Ivysaur",
+        "lat": 41.64855,
+        "lng": -81.24415
+    },
+    {
+        "id": 117,
+        "pokedex_number": 5,
+        "name": "Charmeleon",
+        "lat": 41.649121080611785,
+        "lng": -81.24371939251883
+    },
+    {
+        "id": 118,
+        "pokedex_number": 8,
+        "name": "Wartortle",
+        "lat": 41.648592203250914,
+        "lng": -81.24360173638078
+    },
+    {
+        "id": 119,
+        "pokedex_number": 26,
+        "name": "Raichu",
+        "lat": 41.64861,
+        "lng": -81.24462
+    },
+    {
+        "id": 120,
+        "pokedex_number": 134,
+        "name": "Vaporeon",
+        "lat": 41.64852847009732,
+        "lng": -81.2447974286914
+    },
+    {
+        "id": 121,
+        "pokedex_number": 135,
+        "name": "Jolteon",
+        "lat": 41.64838052999164,
+        "lng": -81.2448997262214
+    },
+    {
+        "id": 123,
+        "pokedex_number": 17,
+        "name": "Pidgeotto",
+        "lat": 41.64875,
+        "lng": -81.24385
+    },
+    {
+        "id": 124,
+        "pokedex_number": 20,
+        "name": "Raticate",
+        "lat": 41.64876844192705,
+        "lng": -81.24431507527332
+    },
+    {
+        "id": 125,
+        "pokedex_number": 12,
+        "name": "Butterfree",
+        "lat": 41.64891,
+        "lng": -81.24455
+    },
+    {
+        "id": 126,
+        "pokedex_number": 75,
+        "name": "Graveler",
+        "lat": 41.647937531728275,
+        "lng": -81.24429603955187
+    },
+    {
+        "id": 127,
+        "pokedex_number": 64,
+        "name": "Kadabra",
+        "lat": 41.64885,
+        "lng": -81.24495
+    },
+    {
+        "id": 128,
+        "pokedex_number": 93,
+        "name": "Haunter",
+        "lat": 41.64843202444965,
+        "lng": -81.2440094856834
+    },
+    {
+        "id": 129,
+        "pokedex_number": 54,
+        "name": "Psyduck",
+        "lat": 41.64952203401547,
+        "lng": -81.24440043214355
+    },
+    {
+        "id": 130,
+        "pokedex_number": 55,
+        "name": "Golduck",
+        "lat": 41.649658342206386,
+        "lng": -81.2437038209204
+    },
+    {
+        "id": 131,
+        "pokedex_number": 58,
+        "name": "Growlithe",
+        "lat": 41.64853690061382,
+        "lng": -81.24328225167669
+    },
+    {
+        "id": 132,
+        "pokedex_number": 59,
+        "name": "Arcanine",
+        "lat": 41.64937744691036,
+        "lng": -81.24393974141509
+    },
+    {
+        "id": 133,
+        "pokedex_number": 60,
+        "name": "Poliwag",
+        "lat": 41.6491,
+        "lng": -81.2443
+    },
+    {
+        "id": 135,
+        "pokedex_number": 67,
+        "name": "Machoke",
+        "lat": 41.64910961619783,
+        "lng": -81.24385603767988
+    },
+    {
+        "id": 136,
+        "pokedex_number": 72,
+        "name": "Tentacool",
+        "lat": 41.64930548209238,
+        "lng": -81.24469068476618
+    },
+    {
+        "id": 137,
+        "pokedex_number": 77,
+        "name": "Ponyta",
+        "lat": 41.64905,
+        "lng": -81.2449
+    },
+    {
+        "id": 138,
+        "pokedex_number": 78,
+        "name": "Rapidash",
+        "lat": 41.64752637661706,
+        "lng": -81.24345667499166
+    },
+    {
+        "id": 139,
+        "pokedex_number": 494,
+        "name": "Victini",
+        "lat": 41.64928177463128,
+        "lng": -81.24424020121812
+    },
+    {
+        "id": 140,
+        "pokedex_number": 258,
+        "name": "Mudkip",
+        "lat": 41.649770331313505,
+        "lng": -81.24414295146799
+    },
+    {
+        "id": 141,
+        "pokedex_number": 1,
+        "name": "Bulbasaur",
+        "lat": 41.647160704230224,
+        "lng": -81.24314747274441
+    },
+    {
+        "id": 143,
+        "pokedex_number": 1,
+        "name": "Bulbasaur",
+        "lat": 41.64819055855537,
+        "lng": -81.24376274808122
+    }
+]

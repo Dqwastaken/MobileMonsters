@@ -1,0 +1,76 @@
+[
+    {
+        "username": "JJ",
+        "inventory": [
+            {
+                "id": 101,
+                "pokedex_number": 1,
+                "name": "Bulbasaur"
+            },
+            {
+                "id": 134,
+                "pokedex_number": 66,
+                "name": "Machop"
+            },
+            {
+                "id": 107,
+                "pokedex_number": 19,
+                "name": "Rattata"
+            }
+        ]
+    },
+    {
+        "username": "Player3",
+        "inventory": [
+            {
+                "id": 108,
+                "pokedex_number": 10,
+                "name": "Caterpie"
+            },
+            {
+                "id": 103,
+                "pokedex_number": 7,
+                "name": "Squirtle"
+            },
+            {
+                "id": 101,
+                "pokedex_number": 1,
+                "name": "Bulbasaur"
+            },
+            {
+                "id": 115,
+                "pokedex_number": 150,
+                "name": "Mewtwo"
+            },
+            {
+                "id": 112,
+                "pokedex_number": 52,
+                "name": "Meowth"
+            },
+            {
+                "id": 142,
+                "pokedex_number": 1,
+                "name": "Bulbasaur"
+            }
+        ]
+    },
+    {
+        "username": "Ben67",
+        "inventory": []
+    },
+    {
+        "username": "Aiden",
+        "inventory": [
+            {
+                "id": 122,
+                "pokedex_number": 136,
+                "name": "Flareon"
+            },
+            {
+                "id": 108,
+                "pokedex_number": 10,
+                "name": "Caterpie"
+            }
+        ]
+    }
+]

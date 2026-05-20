@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Web AR Monster Catcher</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; font-family: sans-serif; }
+        
+        #auth-screen {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 3000;
+            display: flex; justify-content: center; align-items: center;
+        }
+        #auth-box {
+            background: white; padding: 30px; border-radius: 12px;
+            text-align: center; width: 80%; max-width: 300px;
+        }
+        #auth-box input {
+            width: 90%; padding: 10px; margin: 10px 0;
+            border: 1px solid #ccc; border-radius: 5px; font-size: 16px;
+        }
+        #auth-btn {
+            width: 100%; padding: 12px; background: #007aff; color: white;
+            border: none; border-radius: 20px; font-size: 18px; font-weight: bold; cursor: pointer;
+        }
+        #auth-toggle { margin-top: 15px; font-size: 14px; color: #555; cursor: pointer; }
+        #auth-status { margin-top: 10px; color: #ff3b30; font-weight: bold; font-size: 14px; }
+        
+        /* Map UI Layers */
+        #map-screen { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            z-index: 10; 
+            display: none; 
+        }
+        #map { width: 100%; height: 100%; }
+        
+        #ui-layer { 
+            position: absolute; 
+            bottom: 20px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            z-index: 1000; 
+            text-align: center; 
+            width: 90%; 
+            pointer-events: none; 
+        }
+        #status, #catch-btn { pointer-events: auto; }
+        #status { background: rgba(255,255,255,0.9); padding: 10px; border-radius: 8px; font-weight: bold; margin-bottom: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        #catch-btn { display: none; padding: 15px 30px; font-size: 20px; font-weight: bold; background: #ff3b30; color: white; border: none; border-radius: 30px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        
+        /* AR Screen UI Layers */
+        #ar-screen { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            z-index: 2000; 
+            visibility: hidden; 
+        }
+        #back-btn { position: absolute; top: 20px; left: 20px; z-index: 2100; padding: 10px 20px; background: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        
+        #ar-ui-layer {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2100;
+            text-align: center;
+            width: 90%;
+        }
+        #ar-throw-btn { padding: 15px 40px; font-size: 22px; font-weight: bold; background: #007aff; color: white; border: none; border-radius: 30px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.4); }
+        #ar-status { background: rgba(0,0,0,0.7); color: white; padding: 8px 15px; border-radius: 20px; display: inline-block; margin-bottom: 10px; font-weight: bold; }
+
+        #gif-proxy-container { display: none; }
+    </style>
+</head>
+<body>
+
+    <!-- Hidden image element used to decode animated GIFs frame-by-frame.
+         A-Frame can't animate GIF textures natively, so game.js reads pixels
+         from this element each frame and pushes them to a CanvasTexture instead. -->
+    <div id="gif-proxy-container">
+        <img id="native-gif-element" crossOrigin="anonymous" src="" />
+    </div>
+
+    <!-- Auth Screen: shown first, hidden after a successful login/register -->
+    <div id="auth-screen">
+        <div id="auth-box">
+            <h2 id="auth-title">Trainer Login</h2>
+            <input type="text" id="username" placeholder="Enter Username" required>
+            <button id="auth-btn" onclick="submitAuth()">Login</button>
+            <p id="auth-toggle" onclick="toggleAuthMode()">Need an account? <b>Register here</b></p>
+            <div id="auth-status"></div>
+        </div>
+    </div>
+
+    <!-- Map Screen: the main overworld view with the Leaflet map and catch button -->
+    <div id="map-screen">
+        <div id="map"></div>
+        <div id="ui-layer">
+            <div id="status">Acquiring satellite lock...</div>
+            <button id="catch-btn" onclick="startEncounter()">A wild monster appeared! CATCH IT!</button>
+        </div>
+    </div>
+
+    <!-- AR Screen: the catch encounter view, rendered on top of the map -->
+    <div id="ar-screen">
+        <button id="back-btn" onclick="fleeEncounter()">Run Away</button>
+
+        <div id="ar-ui-layer">
+            <div id="ar-status">Ready to capture!</div><br>
+            <button id="ar-throw-btn" onclick="throwBall()">THROW BALL</button>
+        </div>
+
+        <!-- A-Frame scene: embedded mode disables the default fullscreen/VR button -->
+        <a-scene embedded vr-mode-ui="enabled: false">
+            <!-- pointerLockEnabled: false keeps the cursor visible on desktop -->
+            <a-camera look-controls="pointerLockEnabled: false">
+                <a-cursor visible="false"></a-cursor>
+            </a-camera>
+
+            <a-sky color="#87CEEB"></a-sky>
+
+            <!-- Monster sprite: texture and visibility are controlled by game.js -->
+            <a-image id="monster" position="0 1.5 -4" width="1.8" height="1.8" material="transparent: true; shader: flat;"></a-image>
+
+            <!-- Pokéball: animated by game.js through the throw/shake sequence -->
+            <a-sphere id="pokeball" position="0 0.2 -1.2" radius="0.12" color="#ff3b30"></a-sphere>
+
+            <!-- Ground plane to give the scene a sense of depth -->
+            <a-plane position="0 0 -4" rotation="-90 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
+        </a-scene>
+    </div>
+
+    <!-- Game logic is in game.js -->
+    <script src="game.js"></script>
+</body>
+</html>
