@@ -1,0 +1,12 @@
+[
+    {
+        "username": "JJ",
+        "inventory": [
+            {
+                "id": 101,
+                "pokedex_number": 1,
+                "name": "Bulbasaur"
+            }
+        ]
+    }
+]
